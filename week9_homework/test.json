@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "The Overall Household Income In Malaysia from 1979 - 2022",
+  "width": 800,
+  "height": 500,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/Visualization2/malaysia_map.json",
+    "format": {"type": "topojson", "feature": "my"}
+    },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {"url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/week9_homework/hh_income_state.csv"},
+        "key": "state",
+        "fields": ["date", "income_mean", "income_median"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.5},
+  "encoding": {
+    "color": {
+      "field": "income_mean",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "title": "Mean Household Income (RM)"
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "income_mean", "type": "quantitative", "title": "Mean Income (RM)"},
+      {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)"}
+    ]
+  }
+}
