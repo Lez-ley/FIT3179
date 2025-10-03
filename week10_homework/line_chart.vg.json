@@ -3,7 +3,10 @@
     "title": {
         "text": "Malaysia Is Rich, But Is The Growth Fair ?",
         "anchor": "middle",
-        "fontSize": 18
+        "fontSize": 18,
+        "subtitle": "year range can be filtered by selecting desired 'From' and 'Until' below",
+        "subtitleFontSize": 11.5,
+        "subtitleColor": "gray"
     },
     "width": 700,
     "height": 400,

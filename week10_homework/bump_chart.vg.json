@@ -1,6 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Which State Surged Ahead & Which State Lagged Behind?",
+  "title": {
+    "text": "Which State Surged Ahead & Which State Lagged Behind?",
+    "fontSize": 18,
+    "subtitle": "click on any individual bump to filter based on your desired states",
+    "subtitleFontSize": 11.5,
+    "subtitleColor": "gray"
+  },
   "width": 800,
   "height": 650,
   "data": {
