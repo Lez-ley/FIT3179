@@ -1,0 +1,196 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Which State Surged Ahead & Which State Lagged Behind?",
+  "width": 800,
+  "height": 650,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/Visualization2/hh_income_state.csv"
+  },
+  "transform": [
+    {
+      "filter": " datum.state != 'W.P. Putrajaya' && datum.state != 'W.P. Labuan' && datum.state != 'W.P. Kuala Lumpur' "
+    },
+    {
+      "calculate": " year(datum.date) ",
+      "as": "year"
+    },
+    {
+      "filter": " datum.year==1976||datum.year==1979||datum.year==1989||datum.year==1999||datum.year==2009||datum.year==2019||datum.year==2022 "
+    },
+    {
+      "calculate": "toNumber(datum.income_mean)",
+      "as": "income_mean"
+    },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "groupby": ["year"],
+      "sort": [{"field": "income_mean", "order": "descending"},
+      {"field": "income_median", "order": "descending"}]
+    },
+    {
+      "calculate": "if(datum.rank == 1, '1st', if(datum.rank == 2, '2nd', if(datum.rank == 3, '3rd', datum.rank + 'th')))",
+      "as": "rank_label"
+    }
+  ],
+    "layer": [
+        {
+            "selection": {
+                "state_selection": {
+                "type": "multi",
+                "fields": ["state"],
+                "toggle": "true"
+                },
+                "highlight": {
+                "type": "single",
+                "on": "mouseover",
+                "empty": "none"
+                }
+            },
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 200,
+                "opacity": 1
+            },
+            "encoding": {
+                "x": {
+                    "field": "year",
+                    "type": "ordinal",
+                    "title": "Year",
+                    "axis": {"labelAngle": 0, "labelFontSize": 12, "offset": 25}
+                },
+                "y": {
+                    "field": "rank",
+                    "type": "quantitative",
+                    "title": "Rank",
+                    "axis": {"titleFontSize": 11, "labelFontSize": 12, "tickMinStep": 1},
+                    "scale": {"reverse": true, "domain": [1, 13]}
+                },
+                "color": {
+                    "field": "state",
+                    "type": "nominal",
+                    "title": "State",
+                    "scale": {"scheme": "category20"}
+                },
+                "size": {
+                    "condition": {"selection": "highlight", "value": 450},
+                    "value": 300
+                },
+                "opacity": {
+                    "condition": {"selection": "state_selection", "value": 1},
+                    "value": 0.18
+                },
+                "tooltip": [
+                    {"field": "state", "type": "nominal", "title": "State"},
+                    {"field": "year", "type": "ordinal", "title": "Year"},
+                    {"field": "income_mean", "type": "quantitative", "title": "AVG. Income (RM)", "format": ","},
+                    {"field": "rank_label", "type": "nominal", "title": "Rank"}
+                ]
+            }
+        },
+        {
+        "mark": {
+            "type": "line",
+            "interpolate": "monotone",
+            "strokeWidth": 8,
+            "opacity": 0.37
+        },
+        "encoding": {
+            "x": {"field": "year", "type": "ordinal"},
+            "y": {"field": "rank", "type": "quantitative"},
+            "color": {"field": "state", "type": "nominal"},
+            "opacity": {
+                "condition": {"selection": "state_selection", "value": 0.48},
+                "value": 0.08
+            }
+        }
+        },
+        {
+        "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "middle",
+            "dy": -20,
+            "fontSize": 12,
+            "fontWeight": "bolder"
+        },
+        "transform": [{"filter": "datum.year == 1976"}],
+        "encoding": {
+            "x": {"field": "year", "type": "ordinal"},
+            "y": {"field": "rank", "type": "quantitative"},
+            "text": {"field": "state"},
+            "color": {"field": "state", "type": "nominal"},
+            "opacity": {
+                "condition": {"selection": "state_selection", "value": 1},
+                "value": 0
+            }
+        }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "dy": -20,
+                "fontSize": 12,
+                "fontWeight": "bolder"
+            },
+            "transform": [{"filter": "datum.year == 2022"}],
+            "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "rank", "type": "quantitative"},
+                "text": {"field": "state"},
+                "color": {"field": "state", "type": "nominal"},
+                "opacity": {
+                    "condition": {"selection": "state_selection", "value": 1},
+                    "value": 0
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 12,
+                "fontWeight": "bolder"
+            },
+            "transform": [{"filter": "datum.year == 1976"}],
+            "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "rank", "type": "quantitative"},
+                "text": {"field": "rank"},
+                "color": {"value": "white"},
+                "opacity": {
+                "condition": {"selection": "state_selection", "value": 1},
+                "value": 0
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "fontSize": 12,
+                "fontWeight": "bolder"
+            },
+            "transform": [{"filter": "datum.year == 2022"}],
+            "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "rank", "type": "quantitative"},
+                "text": {"field": "rank"},
+                "color": {"value": "white"},
+                "opacity": {
+                "condition": {"selection": "state_selection", "value": 1},
+                "value": 0
+                }
+            }
+        }
+    ],
+    "config": {
+        "axis": {"grid": true, "labelFont": "Arial", "titleFont": "Arial"},
+        "view": {"stroke": "transparent"},
+        "title": {"font": "Arial", "fontSize": 18, "anchor": "middle"}
+    }
+}
