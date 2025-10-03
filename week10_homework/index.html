@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Vega Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vega_lite_vis.js"></script>
+
+    <title>FIT3179 | HW10</title>
+</head>
+
+<body>
+    <h1>FIT3179 | Homework Week 10</h1>
+
+    <!-- Bump chart -->
+    <div id="bump_chart"></div>
+
+    <!-- Line chart -->
+    <div id="line_chart"></div>
+
+    <script>
+        var chart_1 = "bump_chart.vg.json";
+        var chart_2 = "line_chart.vg.json";
+
+        vegaEmbed("#bump_chart", chart_1).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed("#line_chart", chart_2).then(function(result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+    </script>
+</body>
+</html>
