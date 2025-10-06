@@ -18,23 +18,22 @@
 </head>
 
 <body>
+    <body style="display: flex; flex-direction: column; align-items: center;">
     <h1>FIT3179 | Homework Week 10</h1>
 
-    <!-- Bump chart -->
-    <div id="line_chart" style="margin-bottom: 200px;"></div>
-
-    <!-- Line chart -->
-    <div id="bump_chart"></div>
+    <div id="line_chart" style="margin-bottom: 40px;"></div>
+    <div id="choropleth_map"></div>
+</body>
 
     <script>
         var chart_1 = "line_chart.vg.json";
-        var chart_2 = "bump_chart.vg.json";
+        var chart_2 = "/week9_homework/choropleth_map.vg.json";
 
         vegaEmbed("#line_chart", chart_1).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
-        vegaEmbed("#bump_chart", chart_2).then(function(result) {
+        vegaEmbed("#choropleth_map", chart_2).then(function(result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
