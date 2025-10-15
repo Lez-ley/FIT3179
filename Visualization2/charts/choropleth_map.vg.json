@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+        "text": "Geographics Distribution of household Economic Well-being in 2022",
+        "anchor": "end",
+        "fontSize": 12,
+        "subtitle": "Spatial analysis of Malaysia's economic landscape",
+        "subtitleFontSize": 10.5,
+        "subtitleColor": "gray",
+        "subtitlePadding": 15
+    },
+  "width": 750,
+  "height": 450,
+  "projection": {"type": "mercator", "center": [109.5, 4], "scale": 1800},
+  "layer":[
+    {
+        "data": {
+        "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/week9_homework/ne_110m_ocean.json",
+        "format": {"type": "topojson", "feature": "ne_110m_ocean"}
+        },
+        "mark": {"type": "geoshape", "fill": "#EFFFFC"}
+    },
+    {
+        "data": {
+        "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/week9_homework/ne_110m_graticules_5.json",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_5"}
+        },
+        "mark": {"type": "geoshape", "fill": null, "stroke": "#9efff4"}
+    },
+    {
+        "data": {
+        "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/Visualization2/malaysia_map.json",
+        "format": {"type": "topojson", "feature": "my"}
+        },
+        "transform": [
+            {
+                "lookup": "properties.name",
+                "from": {
+                    "data": {
+                        "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/week9_homework/hh_income_state.csv","format": {"type": "csv"}},
+                    "key": "state",
+                    "fields": ["date", "income_mean", "income_median"]
+                }
+            }
+        ],
+        "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
+        "encoding": {
+            "color": {
+                "field": "income_mean",
+                "type": "quantitative",
+                "scale": {
+                    "range": ["#ffffcc", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#0c2c84"],
+                    "type": "quantile"
+                },
+                "legend": {
+                    "title": "Mean Income (RM)",
+
+                    "orient": "none",
+                    "legendX": 645,
+                    "legendY": 227,
+                    "direction": "vertical",
+
+                    "titleAnchor": "end",
+                    "labelOverlap": "greedy",
+
+                    "labelOffset": -45
+                }
+            },
+            "tooltip": [
+                {"field": "properties.name", "type": "nominal", "title": "State"},
+                {"field": "income_mean", "type": "quantitative", "title": "Mean Income (RM)"},
+                {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)"}
+            ]
+        }
+    }]
+}
