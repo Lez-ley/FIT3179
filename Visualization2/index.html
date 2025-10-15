@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Vega Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="vega_lite_vis.js"></script>
+
+    <!-- <title>Page Skeleton</title> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background: no-repeat url('data/buildings-g7f0b08f0c_1280.jpg'); background-size: cover; background-position: center;">
+    <div style="backdrop-filter: blur(7px);">
+        <div class="container-fluid font-weight-light">
+
+            <!-- This section is for the Header Container -->
+            <div class="row pt-3 pb-5">
+                <div class="col-12">
+                    <div class="row justify-content-center pt-5 pb-5">
+                        <!-- col-10, adjust width of Top Header Bar, this one vvvv -->
+                        <div class="col-9">
+                            <div class="card border-0 shadow-lg">
+                                <div class="card-header bg-dark text-white">
+                                    <div class="text-right">
+                                        <!-- Button / Link -->
+                                    </div>
+                                    <div class="text-center">
+                                        <!-- large headers / medium headers shall use 64/32 pixels -->
+                                        <h4 style="font-size: 32px;">The Changing Face of</h1>
+                                        <h1 style="font-size: 64px;">Malaysia's Household Income</h3>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <!-- small paragraphs, shall use 15 pixel -->
+                                        <div class="col-10" style="font-size: 15px;">
+                                            <!-- Intro Text / Content -->
+                                            Located at the crossroads of <b>Southeast Asia</b>, <b>Malaysia</b> is a nation defined by
+                                            its <i>diversity</i> in culture, geography, and economy. Since independence, the country has shifted from an 
+                                            <i>agriculture-based economy</i> toward <b>industrialization</b> and <b>services</b>, lifting millions into 
+                                            the <b>middle class</b>. Yet, as Malaysia's economy has grown, <u>income distribution</u> and <u>regional disparities</u> have 
+                                            emerged as defining challenges. Different states have developed at varying paces, and while overall prosperity 
+                                            has improved, questions remain about how evenly that growth has been <b>shared</b>.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- align all containers beyond here with column-9 -->
+                    <div class="row justify-content-center">
+                    <div class="col-9">
+
+                    <!-- section 1: Multi-line chart and line growth chart -->
+                    <!-- the first section, or fiurst container => Line chart -->
+                    <div class="card border-0 shadow-lg mt-4">
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-10 text-center">
+                                    <h4 style="font-size: 32px;">Malaysia Is Rich, But Is The Growth Fair ?</h4>
+                                    <p class="text-muted small text-center" style="font-size: 15px;">
+                                        a look at Malaysia's rising incomes and the unequal pace of growth across households
+                                    </p>
+                                    <hr>
+
+                                    <!-- line chart (mean and median multi-line chart) section -->
+                                    <div class="row align-items-center mb-4">
+                                        <!-- multi-line chart itself is here -->
+                                        <div class="col-md-9">
+                                            <div id="line_chart" style="right: 20px; margin-top: 20px;"></div>
+                                            <script>
+                                                var chart1 = "charts/line_chart.vg.json";
+                                            </script>
+                                        </div>
+                                        <!-- the text content for the multi-line chart (on the right side) -->
+                                        <div class="col-md-3" style="left: 20px;">
+                                            <strong style="display: block; text-align: left; font-size: 16px;">
+                                                Mean and Median Household Income, 1974 - 2022</strong>
+                                            <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">
+                                            The chart depicts Malaysia's mean and median household income growth from 1974 to 2022. 
+                                            </p>
+                                            <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">Both indicators show 
+                                            a long-term upward trend, with noticeable declines during the 1997 Asian Financial Crisis and the 2020 Covid-19 
+                                            pandemic. THe persistent disparity between mean and median income highlights enduring income inequality
+                                            within the country.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- line growth chart (the % income growth chart) section -->
+                                    <div class="row align-items-center">
+                                        <!-- line growth chart itself -->
+                                        <div class="col-md-9">
+                                            <div id="line_growth_chart" style="right: 35px;"></div>
+                                            <script>
+                                                var chart2 = "charts/income_growth_percent.vg.json";
+                                            </script>
+                                        </div>
+                                        <!-- text content for the line growth chart (on te righ side) -->
+                                        <div class="col-md-3" style="left: 20px;">
+                                            <strong style="display: block; text-align: left; font-size: 16px;">
+                                                How Are Incomes Growing and Slowing, 1974 - 2022</strong>
+                                            <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">
+                                            The chart shows the fluctuations in Malaysia's household income growth rate from 1974 to 2022.
+                                            </p>
+                                            <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">
+                                                Periods of rapid expansion, such as the early 1980s, are contrasted by sharp declines during
+                                                economic crises, notably in 1987, 1999, and 2020. The irregular pattern indicates that Malaysa's 
+                                                income growth is highly sensitive to domestic and global economic conditions.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        Promise.all([
+                                            vegaEmbed("#line_chart", chart1),
+                                            vegaEmbed("#line_growth_chart", chart2)
+                                        ]).then(function(results) {
+                                            var view1 = results[0].view;
+                                            var view2 = results[1].view;
+
+                                            // When users select year filter in chart 1, it will be sent to chart 2
+                                            view1.addSignalListener('fromYear', function(name, value) {
+                                            view2.signal('fromYear', value).run();
+                                            });
+                                            view1.addSignalListener('toYear', function(name, value) {
+                                            view2.signal('toYear', value).run();
+                                            });
+
+                                            // When users select year filter in chart 2, it will be sent to chart 1
+                                            view2.addSignalListener('fromYear', function(name, value) {
+                                            view1.signal('fromYear', value).run();
+                                            });
+                                            view2.addSignalListener('toYear', function(name, value) {
+                                            view1.signal('toYear', value).run();
+                                            });
+                                        }).catch(console.error);
+                                    </script>
+
+
+                                    <hr>
+                                    <figure class="figure-caption text-right">Source: <a href="https://open.dosm.gov.my/data-catalogue/hh_income" target="_blank">OpenDOSM</a></figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- section 2: Bump chart -->
+                    <div class="card border-0 shadow-lg mt-4">
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-10 text-center">
+                                    <h4 style="font-size: 32px;">Which State Surged Ahead and Which State Lagged Behind ?</h4>
+                                    <p class="text-muted small text-center" style="font-size: 15px;">
+                                        a visual comparison of how states have risen or fallen in household income rankings over time
+                                    </p>
+                                    <hr>
+                                        <strong style="display: block; text-align: left; font-size: 16px; margin-top: 40px;">
+                                                State-level Income Rankings and Shifts Across Time</strong>
+                                        <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">
+                                            This chart contrasts the relative rankings of Malysian states based on household income from 1976 to 2022. 
+                                            Selangor and Pulau Pinang stayed at the top, while states like Kelantan and Kedah continued to rank lower. 
+                                            It shows how some states have surged ahead while others still lag behind over time.
+                                        </p>
+
+                                        <div id="bump_chart" style="left: 60px; top: 20px;"></div>
+                                        
+                                        <script>
+                                            var chart3 = "charts/bump_chart.vg.json"
+
+                                            vegaEmbed("#bump_chart", chart3).then(function(result) {
+                                            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                            }).catch(console.error);
+
+                                        </script>
+
+                                    <hr>
+                                    <figure class="figure-caption text-right">Source: <a href="https://open.dosm.gov.my/data-catalogue/hh_income_state" target="_blank">OpenDOSM</a> |
+                                        <a href="https://www.kaggle.com/datasets/akma1xz/draft-dataset?resource=download&select=hh_income_state.csv" target="_blank">Kaggle</a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 3: choropleth map -->
+                    <div class="card border-0 shadow-lg mt-4">
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-10 text-center">
+                                    <h4 style="font-size: 32px;">How About The Present, Where Do Malaysians Earn The Most ?</h4>
+                                    <p class="text-muted small text-center" style="font-size: 15px;">
+                                        examining regional household income distribution and development patterns
+                                    </p>
+                                    <hr>
+                                    <div class="row align-items-center mb-4" style="margin-top: 40px;">
+                                        <!-- the text content for the multi-line chart (on the right side) -->
+                                        <div class="col-md-3">
+                                            <strong style="display: block; text-align: left; font-size: 16px;">
+                                                Geographic Distribution of Household Economic Well-being In 2022</strong>
+                                            <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">
+                                                The map shines light on significant spatial economic disparities across Malaysian states in 2022, 
+                                                federal states and western peninsular states exhibiting substantially higher average household incomes. 
+                                                This geographical pattern underscores the persistent urban-rural divide and regional development imbalances 
+                                                within the country. The concentration of higher earnings in industrialized and urban centyers highlights 
+                                                ongoing challenges in achieving equitable economic distribution across Malaysia's diverse regions.
+                                            </p>
+                                        </div>
+                                        <!-- multi-line chart itself is here -->
+                                        <div class="col-md-9">
+                                            <div id="choropleth_map" style="left: 65px;"></div>
+                                            <script>
+                                                var chart4 = "charts/choropleth_map.vg.json"
+
+                                                vegaEmbed("#choropleth_map", chart4).then(function(result) {
+                                                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                                }).catch(console.error);
+                                            </script>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+                                    <figure class="figure-caption text-right">Source: <a href="https://open.dosm.gov.my/data-catalogue/hh_income_state" target="_blank">OpenDOSM</a> |
+                                        <a href="https://www.kaggle.com/datasets/akma1xz/draft-dataset?resource=download&select=hh_income_state.csv" target="_blank">Kaggle</a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 4: connected dot plot -->
+                    <div class="card border-0 shadow-lg mt-4">
+                        <div class="card-body">
+                            <div class="row justify-content-center">
+                                <div class="col-10 text-center">
+                                    <h4 style="font-size: 32px;">Not Everyone's Share Looks The Same: State-level Income Disparities</h4>
+                                    <p class="text-muted small text-center" style="font-size: 15px;">
+                                        comparative analysis of disparity in the difference between mean and median household earnings by region
+                                    </p>
+                                    <hr>
+                                    <div class="row align-items-center mb-4">
+                                        <!-- multi-line chart itself is here -->
+                                        <div class="col-md-9">
+                                            <div id="connected_dot_plot" style="right: 20px; margin-top: 20px;"></div>
+                                            <script>
+                                                var chart5 = "charts/connected_dot_plot.vg.json"
+
+                                                vegaEmbed("#connected_dot_plot", chart5).then(function(result) {
+                                                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                                                }).catch(console.error);
+                                            </script>
+                                        </div>
+                                        <!-- the text content for the multi-line chart (on the right side) -->
+                                        <div class="col-md-3" style="left: 20px;">
+                                            <strong style="display: block; text-align: left; font-size: 16px;">
+                                                Income Distribution Patterns Across Malaysian States</strong>
+                                            <p style="text-align: justify; text-justify: inter-word; font-size: 13px;">Both indicators show 
+                                                This chart reveals substantial variations in household income distribution patterns across Malaysian 
+                                                states, with notable disparities between mean and median values highlighting unequal income 
+                                                distribution. The comparative analysis demonstrates how different states exhibit distinct economic 
+                                                profiles, with some regions showing more equitable income distribution while others display 
+                                                significant wealth concentration.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <figure class="figure-caption text-right">Source: <a href="https://open.dosm.gov.my/data-catalogue/hh_income_state" target="_blank">OpenDOSM</a> |
+                                        <a href="https://www.kaggle.com/datasets/akma1xz/draft-dataset?resource=download&select=hh_income_state.csv" target="_blank">Kaggle</a>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end container regarding info -->
+                    <div class="card border-0 shadow-sm rounded-1 bg-dark text-light mt-4">
+                        <div class="card-body py-3 px-4 d-flex justify-content-between align-items-center flex-wrap">
+                            <!-- left side-->
+                            <div class="text-left">
+                                <small>
+                                    <strong>FIT3179 Project | Data Visualization 2</strong>
+                                </small>
+                            </div>
+                            <!-- riight side -->
+                            <div class="text-right">
+                                <small>
+                                    <strong>GitHub [</strong>
+                                    <a href="https://github.com/Lez-ley/FIT3179" target="_blank" class="text-info">
+                                    Lez-ley
+                                    </a>
+                                    <strong>]</strong>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="text-center border-top border-secondary py-2">
+                            <small class="text-muted"><b>Leslie Lim • 2025</b></small>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
