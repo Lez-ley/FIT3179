@@ -77,7 +77,16 @@
                     "field": "state",
                     "type": "nominal",
                     "title": "State",
-                    "scale": {"scheme": "category20"}
+                    "scale": {
+                        "domain": [
+                            "Selangor", "Pulau Pinang", "Kedah", "Kelantan", "Johor", "Perak",
+                            "Pahang", "Sabah", "Sarawak", "Negeri Sembilan", "Terengganu",
+                            "Melaka", "Perlis"
+                        ],
+                        "range": ["#000000","#ff7f27","#F2C515", "#b5e61d", "#22b14c", "#7f7f7f",
+                                  "#00a2e8", "#3f48cc", "#a349a4", "#b97a57", "#ffaec9", "#99d9ea", "#c8bfe7"
+                        ]
+                    }
                 },
                 "size": {
                     "condition": {"selection": "highlight", "value": 450},
