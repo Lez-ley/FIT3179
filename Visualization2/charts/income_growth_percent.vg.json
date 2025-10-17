@@ -104,6 +104,48 @@
       "encoding": {
         "y": {"datum": 0}
       }
-    }
+    },
+    {
+            "data": {
+                "values": [
+                    {"date": "01-01-1997", "label": "1997 | Asian Financial Crisis", "color": "red"},
+                    {
+                        "date": "01-01-2020",
+                        "label": "‎                   2020 | Covid-19",
+                        "color": "red"
+                    }
+                ]
+            },
+            "transform": [
+                {"calculate": "toDate(datum.date)", "as": "parsed_date"},
+                {
+                    "filter": " year(datum.parsed_date) >= fromYear && year(datum.parsed_date) <= toYear "
+                }
+            ],
+            "layer": [
+                {
+                    "mark": {"type": "rule", "color": "red", "strokeWidth": 1, "strokeDash": [4, 4]},
+                    "encoding": {
+                        "x": {"field": "parsed_date", "type": "temporal"}
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "center",
+                        "baseline": "middle",
+                        "dy": -90,
+                        "dx": -80,
+                        "fontSize": 11,
+                        "fontWeight": "normal"
+                    },
+                    "encoding": {
+                        "x": {"field": "parsed_date", "type": "temporal"},
+                        "text": {"field": "label"},
+                        "color": {"value": "red"}
+                    }
+                }
+            ]
+        }
   ]
 }
