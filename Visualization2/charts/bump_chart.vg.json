@@ -11,7 +11,7 @@
   "width": 800,
   "height": 650,
   "data": {
-    "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/Visualization2/hh_income_state.csv"
+    "url": "https://raw.githubusercontent.com/Lez-ley/FIT3179/main/Visualization2/data/hh_income_state.csv"
   },
   "transform": [
     {
